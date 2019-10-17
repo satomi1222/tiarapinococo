@@ -1,0 +1,412 @@
+     
+@charset "UTF-8";
+
+/* テキストの自動拡大を無効化 */
+body {
+   -webkit-text^size-adjust; none;
+   text-size-adjust: none; 
+  }
+
+
+/* 基本設定　*/
+
+* {
+	margin: 0;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+/* ページ全体の設定 */
+
+body {
+	display: grid;
+        grid-template-columns: 20px 1fr 20px;
+	grid-template-rows:
+                   [head] 100px 
+                   [title] auto 
+                   [sub] auto 
+                   [recent] auto 
+                   [foot] 100px;
+	row-gap: 20px;
+	font-family: sans-serif;
+}
+
+/* パーツ配置 */
+
+body > * {
+	grid-column: 2 / -2;
+}
+
+
+
+/* ヘッダー */
+
+header {
+	grid-row: head;
+	justify-self: center;
+	align-self: center;
+	font-size: 20px;
+	color: #6bf442;
+	font-family: 'Raleway', sans-serif;
+	}
+
+header a {
+      color:#6bf442;
+      text-decoration: none;
+      }
+
+
+	/* ナビゲーションメニュー */
+	nav {
+		grid-row: head;
+		justify-self: center;
+		align-self: end;
+	}
+
+	nav ul {
+		list-style-type: none;
+		padding: 0;
+		display: grid;
+		grid-auto-flow: column;
+		grid-column-gap: 20px;
+		
+	}
+	nav a {
+		color: #50d8ed;
+		text-decoration: none;
+		font-size: 18px;
+		font-weight: bold;
+	}
+	nav a:hover {
+		color:rgb(247, 193, 32);
+	}
+
+	/* ヒーロ―イメージ */
+	figure.hero {
+		grid-column: 1 / -1;
+		grid-row: title / span 2;
+	}
+
+	figure.hero img {
+		height: 547px;
+		object-fit: cover;
+		vertical-align: bottom;
+		filter: brightness(100%);
+		z-index: -1;
+		position: relative;
+		/* Edge用の設定 */
+	}
+
+	/* タイトル */
+	.top h1 {
+		grid-row: title;
+		justify-self: center;
+		align-self: center;
+		color: #ffffff;
+		font-size: 20px;
+		font-weight: normal;
+		line-height: 1.2;
+		text-shadow: 0 0 5px #444444;
+		text-align: center;
+                font-family: 'Raleway', sans-serif;
+	}
+ 
+	/* サブタイトル */
+	.top p {
+		grid-row: sub;
+		text-align: center;
+	}
+	.top p a {
+		color: #ffa500;
+		text-decoration: none;
+		border: solid 1px #ffffff;
+		padding: 10px 20px;
+		display: inline-block;
+		margin-top: 200px;
+		border-radius: 10px;
+		background-color: rgba(255, 255, 255);
+	}
+	.top p a:hover {
+		background-color: rgba(255, 240, 245);
+	}
+   
+        .top p img{
+           width:70px;
+        }
+
+
+	
+
+
+	/* 記事一覧
+          & 記事ページの注目記事メニュー */
+	section, aside ul {
+		grid-row: recent;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 20px 10px;
+		gap: 20px 10px;
+	}
+
+	section a, aside a {
+		color: #000000;
+		text-decoration: none;
+	}
+
+	section a:hover, aside a:hover {
+		text-decoration: underline;
+	}
+
+	section h3, aside h3 {
+		font-size: 14px;
+	}
+	
+        section h2 {
+		grid-column: 1 / -1;
+		font-family: 'Raleway', sans-serif;
+                font-size: 18px;
+	        font-weight: normal;
+		text-align: center;
+	}
+		
+      
+		
+
+
+        /* フッターSNSメニュー */
+
+
+
+              
+
+   
+  
+			
+       /* フッターのバー */
+			body::after {
+				content: "";
+				background-color: rgb(252, 222, 250);
+                                grid-column: 1 / -1;
+				grid-row: foot;
+				z-index: -1;
+			}
+
+
+/* 記事ページ */
+ .post {
+    grid-template-rows:
+                   [head] 100px
+                   [kiji] auto
+                   [submenu] auto
+                   [foot] 100px;
+  }
+
+/* 記事ページ記事 */
+ .post article {
+     grid-row: kiji;
+  }
+
+ .post article > * {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: block;
+  }
+
+ .post article p {
+    line-height: 1;
+  }
+
+
+
+
+/* 記事ページバー */
+ .post::before {
+      content: '';
+      background: #eeeeee;
+      height: 2px;
+      grid-column: 1 / -1;
+      grid-row: kiji;
+  }
+
+
+
+
+/* 記事ページサブメニュー */
+ .post div {
+     grid-row: submenu;
+  }
+
+aside {
+   border: solid 1px #dddddd;
+   padding: 20px;
+   margin-top: 30px;
+   margin-bottom: 30px;
+   text-align: center;
+
+ }
+
+aside h2 {
+  border-bottom:solid 1px #dddddd;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  color: #888888;
+  font-weight: normal;
+  font-family: 'Raleway', sans-serif;
+
+ }
+
+
+aside p {
+   font-size: 14px;
+  }
+
+aside:first-child img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+  }
+
+aside ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+  }
+
+
+/* お問い合わせ 求人情報 */
+table {
+     border-collapse; collapse;
+  }
+
+th, td {
+  border: solid 1px #cccccc;
+  padding: 20px;
+  }
+
+th {
+   width: 4em;
+   text-align: left;
+   background-color: rgb(66, 215, 244);
+   color: #ffffff;
+  }
+
+td {
+  background-color: rgb(222, 245, 249);
+  }
+
+
+
+
+
+
+
+/* ===== PC版の設定 ===== */
+  
+      @media (min-width: 768px) {
+
+ 
+/* PC版：ページ全体の設定 */
+
+body{
+        grid-template-columns:
+                     0.2fr repeat(6,1fr) 0.2fr;
+        grid-column-gap: 5%;
+        column-gap: 5%;
+        grid-template-rows:
+                   [head] 100px 
+                   [title sub] auto  
+                   [recent] auto 
+                   [foot] 100px;
+           }
+
+/* PC版：ヒーローイメージ */
+
+   figure.hero {
+        grid-row: title;
+        margin-top: -20px;
+        }
+
+/* PC版：タイトル */
+   
+  .top h1 {
+      grid-column: 2 / span 3;
+      max-width: 460px;
+      }
+
+/* PC版：サブタイトル */
+
+   .top p {
+     grid-column: 6 / span 3;
+     align-self: center;
+     }
+
+  .top p img {
+       width: 80%;
+       max-width: 460px;
+     }
+
+/* PC　頭 */
+
+header {
+         justify-self: start;
+       }
+
+
+
+　nav {
+          justify-self: end;
+          align-self: center;
+       }
+
+/* PC版：記事一覧 */
+
+      section {
+           grid-template-columns: repeat(4, 1fr);
+           grid-column-gap: 20px;
+           column-gap: 20px;
+           }
+
+/* PC記事ページ */
+ .post {
+      grid-template-rows:
+                [head] 100px
+                [kiji submenu] auto
+                [foot] 100px;
+    }
+
+/* PC記事ページ記事 */
+ .post article {
+      grid-column: 2 / span 4;
+    }
+
+.post article h1 {
+       font-size: 42px;
+  }
+
+.post article p {
+       font-size: 18px;
+  }
+
+/* PC記事ページサブ */
+ .post div {
+       grid-column: 6 / span 2;
+  }
+
+/* PC記事ページバー */
+.post::before {
+       margin-top: -20px;
+  }
+
+/* PCお問い合わせページ */
+input[type="submit"] {
+   width: 250px;
+  }
+
+
+  }
+
+
+/* ===== PC版の設定ここまで ===== */
